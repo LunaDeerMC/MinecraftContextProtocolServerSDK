@@ -10,42 +10,53 @@ package cn.lunadeer.mc.modelContextProtocolAgentSDK.model;
  * @author ZhangYuheng
  * @since 1.0.0
  */
-public class ErrorCode {
+public enum ErrorCode {
     
     // General errors (1xxx)
-    public static final String INTERNAL_ERROR = "1000";
-    public static final String INVALID_REQUEST = "1001";
-    public static final String CAPABILITY_NOT_FOUND = "1002";
-    public static final String PROVIDER_NOT_FOUND = "1003";
+    INTERNAL_ERROR("1000", "An internal error occurred."),
+    INVALID_REQUEST("1001", "The request is invalid or malformed."),
+    CAPABILITY_NOT_FOUND("1002", "The requested capability was not found."),
+    PROVIDER_NOT_FOUND("1003", "The specified provider does not exist."),
     
     // Validation errors (2xxx)
-    public static final String VALIDATION_FAILED = "2000";
-    public static final String PARAMETER_REQUIRED = "2001";
-    public static final String PARAMETER_INVALID = "2002";
-    public static final String SCHEMA_VALIDATION_FAILED = "2003";
+    VALIDATION_FAILED("2000", "Validation failed."),
+    PARAMETER_REQUIRED("2001", "Parameter required."),
+    PARAMETER_INVALID("2002", "Parameter invalid."),
+    SCHEMA_VALIDATION_FAILED("2003", "Schema validation failed."),
     
     // Security errors (3xxx)
-    public static final String PERMISSION_DENIED = "3000";
-    public static final String RATE_LIMIT_EXCEEDED = "3001";
-    public static final String APPROVAL_REQUIRED = "3002";
-    public static final String AUTHENTICATION_FAILED = "3003";
-    
+    PERMISSION_DENIED("3000", "Permission denied."),
+    RATE_LIMIT_EXCEEDED("3001", "Rate limit exceeded."),
+    APPROVAL_REQUIRED("3002", "Approval required."),
+    AUTHENTICATION_FAILED("3003", "Authentication failed."),
+
     // Business errors (4xxx)
-    public static final String PLAYER_NOT_FOUND = "4000";
-    public static final String PLAYER_OFFLINE = "4001";
-    public static final String WORLD_NOT_FOUND = "4002";
-    public static final String ENTITY_NOT_FOUND = "4003";
-    public static final String INSUFFICIENT_BALANCE = "4004";
-    public static final String OPERATION_FAILED = "4005";
-    
+    PLAYER_NOT_FOUND("4000", "Player not found."),
+    PLAYER_OFFLINE("4001", "Player offline."),
+    WORLD_NOT_FOUND("4002", "World not found."),
+    ENTITY_NOT_FOUND("4003", "Entity not found."),
+    INSUFFICIENT_BALANCE("4004", "Insufficient balance."),
+    OPERATION_FAILED("4005", "Operation failed."),
+
     // System errors (5xxx)
-    public static final String COMMUNICATION_ERROR = "5000";
-    public static final String CONNECTION_LOST = "5001";
-    public static final String TIMEOUT = "5002";
-    public static final String ROLLBACK_FAILED = "5003";
-    public static final String SNAPSHOT_FAILED = "5004";
-    
-    private ErrorCode() {
-        // Utility class, prevent instantiation
+    COMMUNICATION_ERROR("5000", "Communication error."),
+    CONNECTION_LOST("5001", "Connection lost."),
+    TIMEOUT("5002", "Timeout."),
+    ROLLBACK_FAILED("5003", "Rollback failed."),
+    SNAPSHOT_FAILED("5004", "Snapshot failed.");
+
+    private final String errorCode;
+    private final String errorMessage;
+    public String getErrorCode() {
+        return errorCode;
+    }
+
+    public String getErrorMessage() {
+        return errorMessage;
+    }
+
+    private ErrorCode(String code, String message) {
+        this.errorCode = code;
+        this.errorMessage = message;
     }
 }
