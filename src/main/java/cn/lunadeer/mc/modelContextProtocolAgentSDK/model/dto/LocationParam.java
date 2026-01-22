@@ -1,168 +1,69 @@
 package cn.lunadeer.mc.modelContextProtocolAgentSDK.model.dto;
 
+import cn.lunadeer.mc.modelContextProtocolAgentSDK.annotations.Param;
+import cn.lunadeer.mc.modelContextProtocolAgentSDK.annotations.Result;
+
 /**
  * Data transfer object representing a location in Minecraft.
  * <p>
- * Used as a parameter type for capabilities that need location information.
+ * This Record can be used for both input parameters (teleport locations) and
+ * output results (player positions). Both @Param and @Result annotations are
+ * applied to support both use cases.
  * </p>
- * 
+ *
  * @author ZhangYuheng
  * @since 1.0.0
  */
-public class LocationParam {
-    
-    private String world;
-    private double x;
-    private double y;
-    private double z;
-    private float yaw;
-    private float pitch;
-    
-    /**
-     * Creates a new location parameter.
-     */
-    public LocationParam() {
-    }
-    
+public record LocationParam(
+    @Param(description = "World name", required = true)
+    @Result(description = "World name", required = true)
+    String world,
+
+    @Param(description = "X coordinate", required = true)
+    @Result(description = "X coordinate", required = true)
+    double x,
+
+    @Param(description = "Y coordinate", required = true)
+    @Result(description = "Y coordinate", required = true)
+    double y,
+
+    @Param(description = "Z coordinate", required = true)
+    @Result(description = "Z coordinate", required = true)
+    double z,
+
+    @Param(description = "Yaw rotation (horizontal angle)")
+    @Result(description = "Yaw rotation (horizontal angle)")
+    float yaw,
+
+    @Param(description = "Pitch rotation (vertical angle)")
+    @Result(description = "Pitch rotation (vertical angle)")
+    float pitch
+) {
     /**
      * Creates a new location parameter with specified coordinates.
-     * 
+     *
      * @param world the world name
      * @param x the x coordinate
      * @param y the y coordinate
      * @param z the z coordinate
+     * @return location parameter
      */
-    public LocationParam(String world, double x, double y, double z) {
-        this.world = world;
-        this.x = x;
-        this.y = y;
-        this.z = z;
+    public static LocationParam create(String world, double x, double y, double z) {
+        return new LocationParam(world, x, y, z, 0.0f, 0.0f);
     }
-    
+
     /**
      * Creates a new location parameter with specified coordinates and rotation.
-     * 
+     *
      * @param world the world name
      * @param x the x coordinate
      * @param y the y coordinate
      * @param z the z coordinate
      * @param yaw the yaw rotation
      * @param pitch the pitch rotation
+     * @return location parameter
      */
-    public LocationParam(String world, double x, double y, double z, float yaw, float pitch) {
-        this.world = world;
-        this.x = x;
-        this.y = y;
-        this.z = z;
-        this.yaw = yaw;
-        this.pitch = pitch;
-    }
-    
-    /**
-     * Gets the world name.
-     * 
-     * @return the world name
-     */
-    public String getWorld() {
-        return world;
-    }
-    
-    /**
-     * Sets the world name.
-     * 
-     * @param world the world name
-     */
-    public void setWorld(String world) {
-        this.world = world;
-    }
-    
-    /**
-     * Gets the x coordinate.
-     * 
-     * @return the x coordinate
-     */
-    public double getX() {
-        return x;
-    }
-    
-    /**
-     * Sets the x coordinate.
-     * 
-     * @param x the x coordinate
-     */
-    public void setX(double x) {
-        this.x = x;
-    }
-    
-    /**
-     * Gets the y coordinate.
-     * 
-     * @return the y coordinate
-     */
-    public double getY() {
-        return y;
-    }
-    
-    /**
-     * Sets the y coordinate.
-     * 
-     * @param y the y coordinate
-     */
-    public void setY(double y) {
-        this.y = y;
-    }
-    
-    /**
-     * Gets the z coordinate.
-     * 
-     * @return the z coordinate
-     */
-    public double getZ() {
-        return z;
-    }
-    
-    /**
-     * Sets the z coordinate.
-     * 
-     * @param z the z coordinate
-     */
-    public void setZ(double z) {
-        this.z = z;
-    }
-    
-    /**
-     * Gets the yaw rotation.
-     * 
-     * @return the yaw rotation
-     */
-    public float getYaw() {
-        return yaw;
-    }
-    
-    /**
-     * Sets the yaw rotation.
-     * 
-     * @param yaw the yaw rotation
-     */
-    public void setYaw(float yaw) {
-        this.yaw = yaw;
-    }
-    
-    /**
-     * Gets the pitch rotation.
-     * 
-     * @return the pitch rotation
-     */
-    public float getPitch() {
-        return pitch;
-    }
-    
-    /**
-     * Sets the pitch rotation.
-     * 
-     * @param pitch the pitch rotation
-     */
-    public void setPitch(float pitch) {
-        this.pitch = pitch;
+    public static LocationParam create(String world, double x, double y, double z, float yaw, float pitch) {
+        return new LocationParam(world, x, y, z, yaw, pitch);
     }
 }

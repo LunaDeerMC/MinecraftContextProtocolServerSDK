@@ -1,74 +1,21 @@
 package cn.lunadeer.mc.modelContextProtocolAgentSDK.model.dto;
 
+import cn.lunadeer.mc.modelContextProtocolAgentSDK.annotations.Result;
+
 /**
  * Result object for setting weather.
  *
  * @author ZhangYuheng
  * @since 1.0.0
  */
-public class SetWeatherResult {
+public record SetWeatherResult(
+    @Result(description = "Whether the operation was successful", required = true)
+    Boolean success,
 
-    private Boolean success;
-    private WeatherType previousType;
-    private WeatherType newType;
+    @Result(description = "Previous weather type before the change", required = true)
+    WeatherType previousType,
 
-    /**
-     * Creates a new set weather result.
-     */
-    public SetWeatherResult() {
-    }
-
-    /**
-     * Gets whether the operation was successful.
-     *
-     * @return true if successful
-     */
-    public Boolean getSuccess() {
-        return success;
-    }
-
-    /**
-     * Sets whether the operation was successful.
-     *
-     * @param success true if successful
-     */
-    public void setSuccess(Boolean success) {
-        this.success = success;
-    }
-
-    /**
-     * Gets the previous weather type before the change.
-     *
-     * @return the previous weather type
-     */
-    public WeatherType getPreviousType() {
-        return previousType;
-    }
-
-    /**
-     * Sets the previous weather type before the change.
-     *
-     * @param previousType the previous weather type
-     */
-    public void setPreviousType(WeatherType previousType) {
-        this.previousType = previousType;
-    }
-
-    /**
-     * Gets the new weather type after the change.
-     *
-     * @return the new weather type
-     */
-    public WeatherType getNewType() {
-        return newType;
-    }
-
-    /**
-     * Sets the new weather type after the change.
-     *
-     * @param newType the new weather type
-     */
-    public void setNewType(WeatherType newType) {
-        this.newType = newType;
-    }
+    @Result(description = "New weather type after the change", required = true)
+    WeatherType newType
+) {
 }
