@@ -73,8 +73,20 @@ public @interface McpContext {
     /**
      * Cache time-to-live in seconds.
      * Only applicable when cacheable is true.
-     * 
+     *
      * @return cache TTL in seconds, defaults to 60
      */
     int cacheTtl() default 60;
+
+    /**
+     * Description of the return value.
+     * <p>
+     * Use this to document what the context returns. For complex return types
+     * (Record classes), the schema will be automatically generated from the
+     * Record's components and their @Result annotations.
+     * </p>
+     *
+     * @return the return value description
+     */
+    String returnDescription() default "";
 }

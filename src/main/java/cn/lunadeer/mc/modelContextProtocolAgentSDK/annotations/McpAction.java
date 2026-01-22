@@ -92,8 +92,20 @@ public @interface McpAction {
     
     /**
      * Whether confirmation is required before executing this action.
-     * 
+     *
      * @return true if confirmation is required, defaults to false
      */
     boolean confirmRequired() default false;
+
+    /**
+     * Description of the return value.
+     * <p>
+     * Use this to document what the action returns. For complex return types
+     * (Record classes), the schema will be automatically generated from the
+     * Record's components and their @Result annotations.
+     * </p>
+     *
+     * @return the return value description
+     */
+    String returnDescription() default "";
 }
