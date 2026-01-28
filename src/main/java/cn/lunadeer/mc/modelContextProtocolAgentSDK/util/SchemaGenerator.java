@@ -24,7 +24,7 @@ public class SchemaGenerator {
      * @param method the method to analyze
      * @return JSON Schema as a map
      */
-    public static Map<String, Object> generateParameterSchema(Method method) {
+    public static Map<String, Object> generateInputSchema(Method method) {
         Map<String, Object> schema = new LinkedHashMap<>();
         schema.put("type", "object");
 
@@ -58,7 +58,7 @@ public class SchemaGenerator {
                     }
                 } else {
                     // Normal parameter
-                    Map<String, Object> paramSchema = generateParameterPropertySchema(
+                    Map<String, Object> paramSchema = generateInputPropertySchema(
                             paramType, paramAnnotation);
                     properties.put(paramName, paramSchema);
 
@@ -84,7 +84,7 @@ public class SchemaGenerator {
      * @param paramAnnotation the @Param annotation
      * @return JSON Schema as a map
      */
-    private static Map<String, Object> generateParameterPropertySchema(
+    private static Map<String, Object> generateInputPropertySchema(
             Class<?> paramType, Param paramAnnotation) {
         Map<String, Object> schema;
 
@@ -144,7 +144,7 @@ public class SchemaGenerator {
      * @param method the method to analyze
      * @return JSON Schema as a map
      */
-    public static Map<String, Object> generateReturnSchema(Method method) {
+    public static Map<String, Object> generateOutputSchema(Method method) {
         Class<?> returnType = method.getReturnType();
         return generateTypeSchema(returnType);
     }
@@ -312,7 +312,7 @@ public class SchemaGenerator {
                 // Check for @Result annotation on the component (for output types)
                 Result resultAnnotation = component.getAnnotation(Result.class);
                 if (resultAnnotation != null) {
-                    applyResultAnnotations(fieldSchema, resultAnnotation);
+                    applyOutputAnnotations(fieldSchema, resultAnnotation);
                     if (resultAnnotation.required()) {
                         required.add(fieldName);
                     }
@@ -325,7 +325,7 @@ public class SchemaGenerator {
                 // Check for @Param annotation on the component (for input types)
                 Param paramAnnotation = component.getAnnotation(Param.class);
                 if (paramAnnotation != null) {
-                    applyParamAnnotations(fieldSchema, paramAnnotation);
+                    applyInputAnnotations(fieldSchema, paramAnnotation);
                     if (paramAnnotation.required()) {
                         required.add(fieldName);
                     }
@@ -380,7 +380,7 @@ public class SchemaGenerator {
             // Check for @Result annotation on the field (for output types)
             Result resultAnnotation = field.getAnnotation(Result.class);
             if (resultAnnotation != null) {
-                applyResultAnnotations(fieldSchema, resultAnnotation);
+                applyOutputAnnotations(fieldSchema, resultAnnotation);
                 if (resultAnnotation.required()) {
                     required.add(fieldName);
                 }
@@ -393,7 +393,7 @@ public class SchemaGenerator {
             // Check for @Param annotation on the field (for input types)
             Param paramAnnotation = field.getAnnotation(Param.class);
             if (paramAnnotation != null) {
-                applyParamAnnotations(fieldSchema, paramAnnotation);
+                applyInputAnnotations(fieldSchema, paramAnnotation);
                 if (paramAnnotation.required()) {
                     required.add(fieldName);
                 }
@@ -420,7 +420,7 @@ public class SchemaGenerator {
      * @param schema           the schema to modify
      * @param resultAnnotation the annotation to apply
      */
-    private static void applyResultAnnotations(Map<String, Object> schema, Result resultAnnotation) {
+    private static void applyOutputAnnotations(Map<String, Object> schema, Result resultAnnotation) {
         // Add description
         if (!resultAnnotation.description().isEmpty()) {
             schema.put("description", resultAnnotation.description());
@@ -474,7 +474,7 @@ public class SchemaGenerator {
      * @param schema          the schema to modify
      * @param paramAnnotation the annotation to apply
      */
-    private static void applyParamAnnotations(Map<String, Object> schema, Param paramAnnotation) {
+    private static void applyInputAnnotations(Map<String, Object> schema, Param paramAnnotation) {
         // Add description
         if (!paramAnnotation.description().isEmpty()) {
             schema.put("description", paramAnnotation.description());

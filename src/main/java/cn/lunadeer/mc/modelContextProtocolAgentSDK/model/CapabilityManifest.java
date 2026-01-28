@@ -30,8 +30,8 @@ public class CapabilityManifest {
     private boolean confirmRequired;
     private boolean cacheable;
     private int cacheTtl;
-    private Map<String, Object> parameterSchema;
-    private Map<String, Object> returnSchema;
+    private Map<String, Object> inputSchema;
+    private Map<String, Object> outputSchema;
 
     /**
      * Gets the unique identifier of the capability.
@@ -290,17 +290,17 @@ public class CapabilityManifest {
      *
      * @return parameter schema map
      */
-    public Map<String, Object> getParameterSchema() {
-        return parameterSchema;
+    public Map<String, Object> getInputSchema() {
+        return inputSchema;
     }
 
     /**
      * Sets the parameter schema (JSON Schema format).
      *
-     * @param parameterSchema parameter schema map
+     * @param inputSchema parameter schema map
      */
-    public void setParameterSchema(Map<String, Object> parameterSchema) {
-        this.parameterSchema = parameterSchema;
+    public void setInputSchema(Map<String, Object> inputSchema) {
+        this.inputSchema = inputSchema;
     }
 
     /**
@@ -308,16 +308,16 @@ public class CapabilityManifest {
      *
      * @return return schema map
      */
-    public Map<String, Object> getReturnSchema() {
-        return returnSchema;
+    public Map<String, Object> getOutputSchema() {
+        return outputSchema;
     }
 
     /**
      * Sets the return type schema (JSON Schema format).
      *
-     * @param returnSchema return schema map
+     * @param outputSchema return schema map
      */
-    public void setReturnSchema(Map<String, Object> returnSchema) {
-        this.returnSchema = returnSchema;
+    public void setOutputSchema(Map<String, Object> outputSchema) {
+        this.outputSchema = outputSchema;
     }
 }
