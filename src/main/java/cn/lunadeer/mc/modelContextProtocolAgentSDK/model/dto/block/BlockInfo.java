@@ -1,7 +1,6 @@
 package cn.lunadeer.mc.modelContextProtocolAgentSDK.model.dto.block;
 
 import cn.lunadeer.mc.modelContextProtocolAgentSDK.annotations.Param;
-import cn.lunadeer.mc.modelContextProtocolAgentSDK.model.dto.LocationParam;
 
 import java.util.Map;
 
@@ -10,7 +9,7 @@ import java.util.Map;
  */
 public record BlockInfo(
         @Param(description = "Location of the block", required = true)
-        LocationParam location,
+        BlockLocationParam blockLocation,
 
         @Param(description = "Material name", required = true)
         String material,

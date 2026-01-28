@@ -8,7 +8,7 @@ import cn.lunadeer.mc.modelContextProtocolAgentSDK.model.dto.LocationParam;
  */
 public record BlockSetting(
         @Param(description = "Location of the block", required = true)
-        LocationParam location,
+        BlockLocationParam blockLocation,
 
         @Param(description = "Material name", required = true)
         String material,
