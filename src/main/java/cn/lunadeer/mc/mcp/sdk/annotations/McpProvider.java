@@ -6,7 +6,7 @@ import java.lang.annotation.*;
  * Marks a class as an MCP capability provider.
  * <p>
  * Classes annotated with this annotation will be scanned and registered
- * by the MCP Agent to provide capabilities to external clients.
+ * by the MCP Server to provide capabilities to external clients.
  * </p>
  *
  * @author ZhangYuheng
@@ -21,7 +21,7 @@ public @interface McpProvider {
      * Unique identifier for the provider.
      * <p>
      * Format: lowercase letters, numbers, and hyphens only.
-     * Example: "mcp-agent-core", "ext.shopkeeper"
+     * Example: "mcp-server-core", "ext.shopkeeper"
      * </p>
      *
      * @return the provider ID

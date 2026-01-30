@@ -4,7 +4,7 @@ package cn.lunadeer.mc.mcp.sdk.model;
  * Standard error codes for MCP operations.
  * <p>
  * These error codes provide a standardized way to communicate errors
- * between the agent and clients.
+ * between the Server and clients.
  * </p>
  *
  * @author ZhangYuheng

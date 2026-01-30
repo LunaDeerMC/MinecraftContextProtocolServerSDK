@@ -1,5 +1,5 @@
 /**
- * MCP Agent SDK - Model Context Protocol Agent for Minecraft.
+ * MCP Server SDK - Model Context Protocol Server for Minecraft.
  * <p>
  * This SDK provides annotations and interfaces for Minecraft plugins to expose
  * their capabilities to external AI agents through the Model Context Protocol.
@@ -35,8 +35,8 @@
  *
  * @author ZhangYuheng
  * @version 1.0.0
- * @see cn.lunadeer.mc.modelContextProtocolAgentSDK.annotations
- * @see cn.lunadeer.mc.modelContextProtocolAgentSDK.api
+ * @see cn.lunadeer.mc.mcp.sdk.annotations
+ * @see cn.lunadeer.mc.mcp.sdk.api
  * @since 1.0.0
  */
 package cn.lunadeer.mc.mcp.sdk;

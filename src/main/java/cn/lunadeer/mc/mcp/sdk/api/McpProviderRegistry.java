@@ -9,7 +9,7 @@ import java.util.List;
  * Registry for MCP capability providers.
  * <p>
  * Third-party plugins use this interface to register their capability providers
- * with the MCP Agent. The registry scans annotated methods and makes them
+ * with the MCP Server. The registry scans annotated methods and makes them
  * available to external clients.
  * </p>
  * <p>

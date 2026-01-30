@@ -62,9 +62,9 @@ publishing {
                     }
                 }
                 scm {
-                    connection = "https://github.com/LunaDeerMC/ModelContextProtocolAgentSDK.git"
-                    developerConnection = "scm:git@github.com:LunaDeerMC/ModelContextProtocolAgentSDK.git"
-                    url = "https://github.com/LunaDeerMC/ModelContextProtocolAgentSDK"
+                    connection = "https://github.com/LunaDeerMC/MinecraftContextProtocolServerSDK.git"
+                    developerConnection = "scm:git@github.com:LunaDeerMC/MinecraftContextProtocolServerSDK.git"
+                    url = "https://github.com/LunaDeerMC/MinecraftContextProtocolServerSDK"
                 }
                 dependencies {
 
@@ -86,10 +86,10 @@ signing { // 文件签名
 
 // remove subproject dependencies from pom file
 tasks.named("generatePomFileForMavenJavaPublication") {
-    finalizedBy("removePomDependenciesWithGroupIdModelContextProtocolAgentSDK")
+    finalizedBy("removePomDependenciesWithGroupIdMinecraftContextProtocolServerSDK")
 }
 // remove subproject dependencies from pom file
-tasks.register("removePomDependenciesWithGroupIdModelContextProtocolAgentSDK") {
+tasks.register("removePomDependenciesWithGroupIdMinecraftContextProtocolServerSDK") {
     doLast {
         val pomFile =
             layout.buildDirectory.file("publications/mavenJava/pom-default.xml")
@@ -103,7 +103,7 @@ tasks.register("removePomDependenciesWithGroupIdModelContextProtocolAgentSDK") {
                 val depsToRemove = mutableListOf<groovy.util.Node>()
                 node.children().forEach {
                     val dependency = it as groovy.util.Node
-                    if (dependency.text().contains("ModelContextProtocolAgentSDK")) {
+                    if (dependency.text().contains("MinecraftContextProtocolServerSDK")) {
                         depsToRemove.add(dependency)
                     }
                 }

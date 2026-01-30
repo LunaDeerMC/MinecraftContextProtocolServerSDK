@@ -3,7 +3,7 @@ package cn.lunadeer.mc.mcp.sdk.exception;
 /**
  * Base exception for all MCP-related errors.
  * <p>
- * All custom exceptions in the MCP Agent SDK extend this class.
+ * All custom exceptions in the MCP Server SDK extend this class.
  * </p>
  *
  * @author ZhangYuheng
